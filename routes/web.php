@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\CalculatorController;
+use App\Http\Controllers\LibraryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,3 +45,12 @@ Route::get('/greet/{name}', [GreetingController::class, 'greetUser']);
 Route::get('/add/{num1}/{num2}', [CalculatorController::class, 'add']);
 
 Route::get('/multiply/{num1}/{num2?}', [CalculatorController::class, 'multiply']);
+
+Route::get('/book', [LibraryController::class, 'showBooks']);
+
+Route::get('/book/{id}', [LibraryController::class, 'showBook']);
+
+Route::get('/search/search/{title}', [LibraryController::class, 'searchTitle']);
+
+Route::get('/books/available/{copies?}', [LibraryController::class, 'checkAvailability']);
+
