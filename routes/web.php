@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\LibraryController;
+use App\Http\Controllers\VehicleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,4 +54,6 @@ Route::get('/book/{id}', [LibraryController::class, 'showBook']);
 Route::get('/search/search/{title}', [LibraryController::class, 'searchTitle']);
 
 Route::get('/books/available/{copies?}', [LibraryController::class, 'checkAvailability']);
+
+Route::get('/vehicles', [VehicleController::class, 'index']);
 
