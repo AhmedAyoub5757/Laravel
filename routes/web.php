@@ -5,6 +5,9 @@ use App\Http\Controllers\GreetingController;
 use App\Http\Controllers\CalculatorController;
 use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\NoteController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,3 +60,14 @@ Route::get('/books/available/{copies?}', [LibraryController::class, 'checkAvaila
 
 Route::get('/vehicles', [VehicleController::class, 'index']);
 
+Route::get('/tasks', [TaskController::class, 'index']);
+Route::get('/tasks/store', [TaskController::class, 'store']);
+Route::get('/tasks/{id}', [TaskController::class, 'show']);
+Route::get('/tasks/{id}/done', [TaskController::class, 'markDone']);
+Route::get('/tasks/{id}/delete', [TaskController::class, 'destroy']);
+
+Route::get('/notes', [NoteController::class, 'index']);
+Route::get('/notes/store', [NoteController::class, 'store']);
+Route::get('/notes/{id}', [NoteController::class, 'show']);
+Route::get('/notes/{id}/toggle-pin', [NoteController::class, 'togglePin']);
+Route::get('/notes/{id}/delete', [NoteController::class, 'delete']);
