@@ -7,6 +7,7 @@ use App\Http\Controllers\LibraryController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\SchoolController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,3 +72,10 @@ Route::get('/notes/store', [NoteController::class, 'store']);
 Route::get('/notes/{id}', [NoteController::class, 'show']);
 Route::get('/notes/{id}/toggle-pin', [NoteController::class, 'togglePin']);
 Route::get('/notes/{id}/delete', [NoteController::class, 'delete']);
+
+
+
+Route::get('/school', [SchoolController::class, 'index'])->name('schools.index');
+Route::get('/school/{id}', [SchoolController::class, 'show']);
+Route::get('/schools/store', [SchoolController::class, 'store']);
+Route::get('/schools/{id}/delete', [SchoolController::class, 'destroy']);
