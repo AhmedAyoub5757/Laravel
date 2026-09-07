@@ -9,6 +9,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +88,12 @@ Route::get('/courses/store', [CourseController::class, 'store']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
 Route::get('/courses/{id}/update', [CourseController::class, 'update']);
 Route::get('/courses/{id}/delete', [CourseController::class, 'destroy']);
+
+
+Route::get('/members', [MemberController::class, 'index'])->name('members.index');
+Route::get('/members/store', [MemberController::class, 'store'])->name('members.store');
+Route::get('/members/{id}', [MemberController::class, 'show'])->name('members.show');
+Route::get('/members/{id}/update', [MemberController::class, 'update'])->name('members.update');
+Route::get('/members/{id}/deactivate', [MemberController::class, 'deactivate'])->name('members.deactivate');
+Route::get('/members/{id}/delete', [MemberController::class, 'delete'])->name('members.delete');
+
