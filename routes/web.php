@@ -85,3 +85,5 @@ Route::get('/schools/{id}/delete', [SchoolController::class, 'destroy']);
 Route::get('/courses', [CourseController::class, 'index']);
 Route::get('/courses/store', [CourseController::class, 'store']);
 Route::get('/courses/{id}', [CourseController::class, 'show']);
+Route::get('/courses/{id}/update', [CourseController::class, 'update']);
+Route::get('/courses/{id}/delete', [CourseController::class, 'destroy']);

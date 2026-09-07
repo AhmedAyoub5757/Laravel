@@ -2,7 +2,7 @@
 <html>
 <head><title>@yield('title')</title></head>
 <body>
-    <nav>School System</nav>
+    <nav>Course Catalog</nav>
     @yield('content')
 </body>
 </html>
