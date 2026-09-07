@@ -11,9 +11,9 @@ class CourseController extends Controller
     public function store()
     {
         Course::create([
-            'title' => 'Introduction to Programming',
-            'code' => 'CS101',
-            'credit_hours' => 3,
+            'title' => 'Introduction to Databases',
+            'code' => 'CS104',
+            'credit_hours' => 2,
             'instructor' => 'Dr. Ahmed Khan',
             'is_active' => true,
         ]);

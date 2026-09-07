@@ -8,6 +8,7 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +80,8 @@ Route::get('/school', [SchoolController::class, 'index'])->name('schools.index')
 Route::get('/school/{id}', [SchoolController::class, 'show']);
 Route::get('/schools/store', [SchoolController::class, 'store']);
 Route::get('/schools/{id}/delete', [SchoolController::class, 'destroy']);
+
+
+Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses/store', [CourseController::class, 'store']);
+Route::get('/courses/{id}', [CourseController::class, 'show']);
