@@ -10,6 +10,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\FeedbackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,3 +98,7 @@ Route::get('/members/{id}/update', [MemberController::class, 'update'])->name('m
 Route::get('/members/{id}/deactivate', [MemberController::class, 'deactivate'])->name('members.deactivate');
 Route::get('/members/{id}/delete', [MemberController::class, 'delete'])->name('members.delete');
 
+
+Route::get('/feedback/create', [FeedbackController::class, 'create']); // shows the empty form
+Route::post('/feedback/store', [FeedbackController::class, 'store']);  // handles the submission
+Route::get('/feedback', [FeedbackController::class, 'index']);         // lists all feedback
