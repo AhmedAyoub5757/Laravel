@@ -13,6 +13,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\RsvpController;
 use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -114,3 +115,8 @@ Route::get('/rsvp/responses', [RsvpController::class, 'index'])->name('rsvp.inde
 
 Route::get('/register', [AuthController::class, 'showRegisterForm']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLoginForm']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/dashboard', function () {
+    return "Welcome, " . Auth::user()->name . "! You are logged in.";
+});
