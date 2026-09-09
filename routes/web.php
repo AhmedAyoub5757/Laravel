@@ -12,6 +12,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\RsvpController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,23 +31,23 @@ Route::get('/', function () {
 });
 
 // Create a route for /about that returns the text "This is the About page"
-// Route::get('/about', function (){
-//     return view('about');
-// });
+Route::get('/about', function (){
+    return view('about');
+});
 
 // Create a route for /greet/{name} that returns "Hello, {name}!" using the captured parameter.
-// Route::get('/greet/{name}', function ($name){
-//     return "Hello, $name!";
-// });
+Route::get('/greet/{name}', function ($name){
+    return "Hello, $name!";
+});
 
 // Create a route for /profile/{username?} where the parameter is optional, defaulting to "Guest" if not provided.
-// Route::get('/profile/{username?}', function($username = "Guest"){
-//     return "hello, $username!";
-// });
+Route::get('/profile/{username?}', function($username = "Guest"){
+    return "hello, $username!";
+});
 
-// Route::get('/test', function (){
-//     return view('test');
-// })->name('test');
+Route::get('/test', function (){
+    return view('test');
+})->name('test');
 
 Route::get('/hello', [GreetingController::class, 'hello']);
 
@@ -108,3 +110,7 @@ Route::get('/feedback', [FeedbackController::class, 'index']);         // lists 
 Route::get('/rsvp', [RsvpController::class, 'create'])->name('rsvp.create');
 Route::post('/rsvp/store', [RsvpController::class, 'store'])->name('rsvp.store');
 Route::get('/rsvp/responses', [RsvpController::class, 'index'])->name('rsvp.index');
+
+
+Route::get('/register', [AuthController::class, 'showRegisterForm']);
+Route::post('/register', [AuthController::class, 'register']);
