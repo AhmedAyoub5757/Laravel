@@ -11,6 +11,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\RsvpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,3 +103,8 @@ Route::get('/members/{id}/delete', [MemberController::class, 'delete'])->name('m
 Route::get('/feedback/create', [FeedbackController::class, 'create']); // shows the empty form
 Route::post('/feedback/store', [FeedbackController::class, 'store']);  // handles the submission
 Route::get('/feedback', [FeedbackController::class, 'index']);         // lists all feedback
+
+
+Route::get('/rsvp', [RsvpController::class, 'create'])->name('rsvp.create');
+Route::post('/rsvp/store', [RsvpController::class, 'store'])->name('rsvp.store');
+Route::get('/rsvp/responses', [RsvpController::class, 'index'])->name('rsvp.index');
