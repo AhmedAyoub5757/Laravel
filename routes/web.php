@@ -115,8 +115,14 @@ Route::get('/rsvp/responses', [RsvpController::class, 'index'])->name('rsvp.inde
 
 Route::get('/register', [AuthController::class, 'showRegisterForm']);
 Route::post('/register', [AuthController::class, 'register']);
-Route::get('/login', [AuthController::class, 'showLoginForm']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/dashboard', function () {
-    return "Welcome, " . Auth::user()->name . "! You are logged in.";
+Route::middleware('auth')->group(function(){
+    Route::get('/dashboard', function (){
+        return "Welcome, " . Auth::user()->name . "! You are logged in.";
+    });
 });
+// Route::get('/dashboard', function () {
+//     return "Welcome, " . Auth::user()->name . "! You are logged in.";
+// });
+
