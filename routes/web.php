@@ -125,4 +125,4 @@ Route::middleware('auth')->group(function(){
 // Route::get('/dashboard', function () {
 //     return "Welcome, " . Auth::user()->name . "! You are logged in.";
 // });
-
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
