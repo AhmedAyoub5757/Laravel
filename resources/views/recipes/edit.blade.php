@@ -1,19 +1,24 @@
 @extends('layouts.app')
 
 @section('title', 'Edit Recipe')
+@section('body-class', 'recipe-page')
+
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('css/recipes.css') }}">
+@endpush
 
 @section('content')
-    <h1>Edit Recipe</h1>
-
-    <form action="{{ route('recipes.update', $recipe->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-
-        <input type="text" name="title" value="{{ old('title', $recipe->title) }}">
-        <input type="text" name="cuisine" value="{{ old('cuisine', $recipe->cuisine) }}">
-        <input type="number" name="cook_time_minutes" value="{{ old('cook_time_minutes', $recipe->cook_time_minutes) }}">
-        <textarea name="ingredients">{{ old('ingredients', $recipe->ingredients) }}</textarea>
-
-        <button type="submit">Update Recipe</button>
-    </form>
+    <main class="recipe-shell recipe-form-shell">
+        <a class="recipe-back-link" href="{{ route('recipes.show', $recipe) }}">← Back to recipe</a>
+        <div class="recipe-form-heading">
+            <p class="recipe-kicker">Refine your recipe</p>
+            <h1>Make it even better.</h1>
+            <p>Update the details below and keep your collection current.</p>
+        </div>
+        <form class="recipe-form" action="{{ route('recipes.update', $recipe) }}" method="POST">
+            @csrf
+            @method('PUT')
+            @include('recipes._form')
+        </form>
+    </main>
 @endsection

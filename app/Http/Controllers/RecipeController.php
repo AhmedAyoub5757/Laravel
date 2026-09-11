@@ -7,66 +7,66 @@ use App\Models\Recipe;
 
 class RecipeController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         $recipes = Recipe::all();
+
         return view('recipes.index', compact('recipes'));
     }
 
-    public function create(){
-
+    public function create()
+    {
         return view('recipes.create');
     }
 
-    public function store(Request $request){
-
+    public function store(Request $request)
+    {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'cusine' => 'required|in:Italian,Chinese,Mexican,French,Japanese',
-            'cook_time_minutes' => 'required|integer|min:1',
+            'cook_time_minutes' => 'required|integer|min:1|max:1440',
             'ingredients' => 'required|string',
         ]);
 
         Recipe::create($validated);
 
-        return redirect('/recipes');
+        return redirect()->route('recipes.index')->with('success', 'Recipe created successfully.');
     }
 
-    public function show($id){
+    public function show($id)
+    {
+        $recipe = Recipe::findOrFail($id);
 
-    $recipe = Recipe::findorFail($id);
-
-    return view('recipes.show', compact('recipe'));
+        return view('recipes.show', compact('recipe'));
     }
 
-    public function edit($id){
-
-        $recipe = Recipe::findorFail($id);
+    public function edit($id)
+    {
+        $recipe = Recipe::findOrFail($id);
 
         return view('recipes.edit', compact('recipe'));
     }
 
-    public function update(Request $request, $id){
-
+    public function update(Request $request, $id)
+    {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'cusine' => 'required|in:Italian,Chinese,Mexican,French,Japanese',
-            'cook_time_minutes' => 'required|integer|min:1',
+            'cook_time_minutes' => 'required|integer|min:1|max:1440',
             'ingredients' => 'required|string',
         ]);
 
-        $recipe = Recipe::findorFail($id);
+        $recipe = Recipe::findOrFail($id);
         $recipe->update($validated);
 
-        return redirect('/recipes');
+        return redirect()->route('recipes.show', $recipe)->with('success', 'Recipe updated successfully.');
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
+        $recipe = Recipe::findOrFail($id);
+        $recipe->delete();
 
-        Recipe::destroy($id);
-
-        return redirect('/recipes');
+        return redirect()->route('recipes.index')->with('success', 'Recipe deleted successfully.');
     }
-
-
 }
