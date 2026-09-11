@@ -14,6 +14,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\RsvpController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RecipeController;
 
 
 /*
@@ -126,3 +127,6 @@ Route::middleware('auth')->group(function(){
 //     return "Welcome, " . Auth::user()->name . "! You are logged in.";
 // });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::resource('recipes', RecipeController::class);
